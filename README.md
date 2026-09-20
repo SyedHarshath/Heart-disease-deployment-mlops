@@ -23,7 +23,8 @@ docker compose up --build -d
 Open:
 
 ```text
-http://localhost:5000
+https://heart-disease-deployment-mlops-1.onrender.com/
+
 ```
 
 Check containers:
