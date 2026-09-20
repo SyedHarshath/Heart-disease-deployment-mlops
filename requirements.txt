@@ -7,3 +7,4 @@ scikit-learn==1.7.2
 matplotlib==3.10.6
 joblib==1.5.2
 openml==0.15.1
+cryptography
