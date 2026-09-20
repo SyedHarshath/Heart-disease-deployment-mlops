@@ -5,16 +5,25 @@ services:
     restart: unless-stopped
 
     environment:
-      MYSQL_ROOT_PASSWORD: rootpass
-      MYSQL_DATABASE: heartdb
-      MYSQL_USER: heartuser
-      MYSQL_PASSWORD: heartpass
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
 
     volumes:
       - mysql_data:/var/lib/mysql
 
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uheartuser", "-pheartpass"]
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "localhost",
+          "-u${MYSQL_USER}",
+          "-p${MYSQL_PASSWORD}"
+        ]
       interval: 5s
       timeout: 5s
       retries: 30
@@ -25,13 +34,13 @@ services:
     restart: unless-stopped
 
     environment:
-      DB_HOST: db
-      DB_PORT: 3306
-      DB_NAME: heartdb
-      DB_USER: heartuser
-      DB_PASSWORD: heartpass
-      FLASK_HOST: 0.0.0.0
-      FLASK_PORT: 5000
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      FLASK_HOST: ${FLASK_HOST}
+      FLASK_PORT: ${FLASK_PORT}
 
     ports:
       - "5000:5000"
