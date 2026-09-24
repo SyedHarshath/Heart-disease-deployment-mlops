@@ -26,4 +26,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: harshathacr2026ea.azurecr.io/heart-disease-api:v1
+          tags: harshathacr2026ea.azurecr.io/heart-disease-api:v2
